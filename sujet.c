@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char* saisie(char *);
 char min(char *);
 char max(char *); 
 
 int main(int argc, char *argv[]){
-    int i = 0;
+    return EXIT_SUCCESS;
+}
+
+char* saisie(char *prenoms){
     char notes[13] = {0};
     
     for(unsigned char j=0; j<13; j++){
         notes[j] = (char)21;
     }
     
+    int i = 0;
     char prenom[10];
     char cas_terminant[10] = "X AE A-XII";
     
@@ -23,10 +28,7 @@ int main(int argc, char *argv[]){
             scanf("%c",&notes[i]);
         }
         i++;
-        printf("%s\n",prenom);
-        printf("%d\n%d\n",min(notes),max(notes));
     }
-    return EXIT_SUCCESS;
 }
 
 char min(char *notes){
