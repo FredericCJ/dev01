@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int min(int *);
 int max(int *); 
@@ -12,12 +13,11 @@ int main(int argc, char *argv[]){
         notes[j] = 21;
     }
     
-    char prenom[10];
-    char cas_terminant[10] = "X AE A-XII";
+    char prenom[13];
     
-    while(prenom != cas_terminant){
+    while(strcmp(prenom,"X AE A-XII\n")){
         printf("Saisir prenom : ");
-        scanf("%s",prenom);
+        fgets(prenom,sizeof(prenom),stdin);
         while(notes[i]<0 || notes[i]>20){
             printf("Saisir note : ");
             scanf("%d",&notes[i]);
@@ -31,11 +31,12 @@ int main(int argc, char *argv[]){
 
 int min(int *notes){
     int i = 0;
-    int max = 20;
-    while(notes[i] != '\0'){
-        if(notes[i] <= max){
-            notes[i] = max;
+    int max = 22;
+    while(*(notes+i) != '\0'){
+        if(*(notes+i) <= max){
+            max = *(notes+i);
         }
+        i++;
     }
     return max;
 }
