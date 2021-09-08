@@ -46,7 +46,7 @@ int max(int *notes){
     int min = 0;
     while(notes[i] != '\0'){
         if(notes[i] >= min){
-            notes[i] = min;
+            min = notes[i];
         }
     }
     return min;
