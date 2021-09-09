@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
     char note[10];
     
     for(int j=0; j<13; j++)
-        notes[j] = 21;
+        notes[j] = '\0';
     for(int j=0; j<100; j++)
         prenom[j] = '\0';
     for(int j=0; j<1000; j++)
@@ -27,26 +27,21 @@ int main(int argc, char *argv[]){
         fgets(prenom,100,stdin);
         strcat(prenoms,prenom);
         if(strcmp(prenom,"X AE A-XII\n")){
-            while(notes[i]<0 || notes[i]>20){
+            while((notes[i]<0 || notes[i]>20) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,5,stdin);
                 sscanf(note,"%f",(notes+i));
             }
         }
         i++;
-        printf("%s\n",prenom);
     }
-    /*
-    printf("%d\n",strcmp(prenom,"X AE A-XII\n"));
-    for(int i=0; i<100; i++)
-        printf("%x ",(int)prenom[i]);
+    printf("%.2f\n",min(notes));
     return EXIT_SUCCESS;
-    */
 }
-/*
+
 float min(float *notes){
     int i = 0;
-    int max = 22;
+    float max = 22;
     while(*(notes+i) != '\0'){
         if(*(notes+i) <= max){
             max = *(notes+i);
@@ -55,7 +50,7 @@ float min(float *notes){
     }
     return max;
 }
-
+/*
 float max(float *notes){
     int i = 0;
     int min = 0;
