@@ -30,6 +30,7 @@ int main(int argc, char *argv[]){
             while((notes[i]<0 || notes[i]>20) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,5,stdin);
+                getchar();
                 sscanf(note,"%f",(notes+i));
             }
         }
