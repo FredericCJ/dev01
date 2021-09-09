@@ -2,34 +2,49 @@
 #include <stdlib.h>
 #include <string.h>
 
-int min(int *);
-int max(int *); 
+float min(float *);
+float max(float *);
+float moyenne(float *);
 
 int main(int argc, char *argv[]){
     int i = 0;
-    int notes[13] = {0};
+    char prenom[100];
+    char prenoms[1000];
+    float notes[13] = {0};
+    char note[10];
     
-    for(int j=0; j<13; j++){
+    for(int j=0; j<13; j++)
         notes[j] = 21;
-    }
-    
-    char prenom[13];
-    
-    while(strcmp(prenom,"X AE A-XII\n")){
+    for(int j=0; j<100; j++)
+        prenom[j] = '\0';
+    for(int j=0; j<1000; j++)
+        prenoms[j] = '\0';
+    for(int j=0; j<10; j++)
+        note[j] = '\0';
+
+    while(strcmp(prenom,"X AE A-XII\n") != 0){
         printf("Saisir prenom : ");
-        fgets(prenom,sizeof(prenom),stdin);
-        while(notes[i]<0 || notes[i]>20){
-            printf("Saisir note : ");
-            scanf("%d",&notes[i]);
+        fgets(prenom,100,stdin);
+        strcat(prenoms,prenom);
+        if(strcmp(prenom,"X AE A-XII\n")){
+            while(notes[i]<0 || notes[i]>20){
+                printf("Saisir note : ");
+                fgets(note,5,stdin);
+                sscanf(note,"%f",(notes+i));
+            }
         }
         i++;
         printf("%s\n",prenom);
     }
-    printf("%d\n%d\n",min(notes),max(notes));
+    /*
+    printf("%d\n",strcmp(prenom,"X AE A-XII\n"));
+    for(int i=0; i<100; i++)
+        printf("%x ",(int)prenom[i]);
     return EXIT_SUCCESS;
+    */
 }
-
-int min(int *notes){
+/*
+float min(float *notes){
     int i = 0;
     int max = 22;
     while(*(notes+i) != '\0'){
@@ -41,7 +56,7 @@ int min(int *notes){
     return max;
 }
 
-int max(int *notes){
+float max(float *notes){
     int i = 0;
     int min = 0;
     while(notes[i] != '\0'){
@@ -51,3 +66,4 @@ int max(int *notes){
     }
     return min;
 }
+*/
