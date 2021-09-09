@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
     int i = 0;
     char prenom[100];
     char prenoms[1000];
-    float notes[13] = {0};
+    float notes[13];
     char note[10];
     
     for(int j=0; j<13; j++)
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
         }
         i++;
     }
-    printf("min : %.2f\nmax : %.2f\n",min(notes),max(notes));
+    printf("min : %.2f\nmax : %.2f\nmoyenne : %.2f\n",min(notes),max(notes),moyenne(notes));
     return EXIT_SUCCESS;
 }
 
@@ -61,4 +61,15 @@ float max(float *notes){
         i++;
     }
     return min;
+}
+
+float moyenne(float *notes){
+    int i = 0;
+    float moyenne = 0.0;
+    while(*(notes+i) != '\0'){
+        moyenne = *(notes+i)+moyenne;
+        i++;
+    }
+    moyenne = moyenne/(float)i;
+    return moyenne;
 }
