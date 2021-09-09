@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
         }
         i++;
     }
-    printf("%.2f\n",min(notes));
+    printf("min : %.2f\nmax : %.2f\n",min(notes),max(notes));
     return EXIT_SUCCESS;
 }
 
@@ -50,15 +50,15 @@ float min(float *notes){
     }
     return max;
 }
-/*
+
 float max(float *notes){
     int i = 0;
-    int min = 0;
-    while(notes[i] != '\0'){
-        if(notes[i] >= min){
-            min = notes[i];
+    float min = 0;
+    while(*(notes+i) != '\0'){
+        if(*(notes+i) >= min){
+            min = *(notes+i);
         }
+        i++;
     }
     return min;
 }
-*/
