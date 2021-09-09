@@ -2,24 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define PRENOM_MAXLEN 100
+#define PRENOMS_MAXLEN 1000
+#define NOTE_MAXLEN 10
+#define NOTES_MAXLEN 100
+
 float min(float *);
 float max(float *);
 float moyenne(float *);
 
 int main(int argc, char *argv[]){
     int i = 0;
-    char prenom[100];
-    char prenoms[1000];
-    float notes[13];
-    char note[10];
+    char prenom[PRENOM_MAXLEN];
+    char prenoms[PRENOMS_MAXLEN];
+    float notes[NOTES_MAXLEN];
+    char note[NOTE_MAXLEN];
     
-    for(int j=0; j<13; j++)
+    for(int j=0; j<NOTES_MAXLEN; j++)
         notes[j] = '\0';
-    for(int j=0; j<100; j++)
+    for(int j=0; j<PRENOM_MAXLEN; j++)
         prenom[j] = '\0';
-    for(int j=0; j<1000; j++)
+    for(int j=0; j<PRENOMS_MAXLEN; j++)
         prenoms[j] = '\0';
-    for(int j=0; j<10; j++)
+    for(int j=0; j<NOTE_MAXLEN; j++)
         note[j] = '\0';
 
     while(strcmp(prenom,"X AE A-XII\n") != 0){
@@ -29,8 +34,7 @@ int main(int argc, char *argv[]){
         if(strcmp(prenom,"X AE A-XII\n")){
             while((notes[i]<0 || notes[i]>20) || notes[i] == '\0'){
                 printf("Saisir note : ");
-                fgets(note,5,stdin);
-                getchar();
+                fgets(note,NOTE_MAXLEN,stdin);
                 sscanf(note,"%f",(notes+i));
             }
         }
