@@ -5,7 +5,7 @@
 
 int findlf(char *);
 
-int main(int argc, char *argv[]){
+int main(){
     int i = 0;
     char prenom[PRENOM_MAXLEN];
     char best[PRENOM_MAXLEN];
@@ -25,7 +25,6 @@ int main(int argc, char *argv[]){
         worst[j] = '\0';
     }
 
-    if(!feof(stdin)){
     while(strcmp(prenom,PRENOM_STOP)){
         printf("Saisir prenom : ");
         fgets(prenom,100,stdin);
@@ -48,7 +47,7 @@ int main(int argc, char *argv[]){
             strcpy(best, prenom);
         i++;
     }
-    }
+
     printf("\n");
     system("clear");
 
