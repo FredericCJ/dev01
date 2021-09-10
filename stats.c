@@ -1,6 +1,7 @@
-float min(float *notes){
+#include "sujet.h"
+
+float min(float *notes, float max){
     int i = 0;
-    float max = 22;
     while(*(notes+i) != '\0'){
         if(*(notes+i) <= max){
             max = *(notes+i);
@@ -10,9 +11,8 @@ float min(float *notes){
     return max;
 }
 
-float max(float *notes){
+float max(float *notes, float min){
     int i = 0;
-    float min = 0;
     while(*(notes+i) != '\0'){
         if(*(notes+i) >= min){
             min = *(notes+i);

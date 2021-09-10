@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
         fgets(prenom,100,stdin);
         strcat(prenoms,prenom);
         if(strcmp(prenom,"X AE A-XII\n")){
-            while((notes[i]<0 || notes[i]>20) || notes[i] == '\0'){
+            while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
                 sscanf(note,"%f",(notes+i));
@@ -32,6 +32,7 @@ int main(int argc, char *argv[]){
         }
         i++;
     }
-    printf("min : %.2f\nmax : %.2f\nmoyenne : %.2f\n",min(notes),max(notes),moyenne(notes));
+    printf("min : %.2f\nmax : %.2f\nmoyenne : %.2f\n",
+        min(notes, NOTE_MAX),max(notes, NOTE_MIN),moyenne(notes));
     return EXIT_SUCCESS;
 }
