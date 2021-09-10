@@ -11,6 +11,5 @@
 float min(float *, float);
 float max(float *, float);
 float moyenne(float *);
-int findlf(char *);
 
 #endif

@@ -3,6 +3,8 @@
 #include <string.h>
 #include "sujet.h"
 
+int findlf(char *);
+
 int main(int argc, char *argv[]){
     int i = 0;
     char prenom[PRENOM_MAXLEN];
@@ -23,12 +25,13 @@ int main(int argc, char *argv[]){
         worst[j] = '\0';
     }
 
+    if(!feof(stdin)){
     while(strcmp(prenom,PRENOM_STOP)){
         printf("Saisir prenom : ");
         fgets(prenom,100,stdin);
         prenom[findlf(prenom)] = '\0';
         
-        if(strcmp(prenom,PRENOM_STOP)){
+        if(strcmp(prenom,PRENOM_STOP)){                                             
             while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
@@ -45,7 +48,7 @@ int main(int argc, char *argv[]){
             strcpy(best, prenom);
         i++;
     }
-
+    }
     printf("\n");
     system("clear");
 
@@ -57,4 +60,12 @@ int main(int argc, char *argv[]){
         moyenne(notes));
 
     return EXIT_SUCCESS;
+}
+
+int findlf(char *str){
+    int i = 0;
+    while(*(str+i) != '\n'){
+        i++;
+    }
+    return i;
 }
