@@ -2,6 +2,8 @@
 
 float min(float *notes, float max){
     int i = 0;
+    if(*notes == 0xa)
+        return 1e37;
     while(*(notes+i) != '\0'){
         if(*(notes+i) <= max){
             max = *(notes+i);
@@ -12,6 +14,8 @@ float min(float *notes, float max){
 }
 
 float max(float *notes, float min){
+    if(*notes == 0xa)
+        return -1e37;
     int i = 0;
     while(*(notes+i) != '\0'){
         if(*(notes+i) >= min){
