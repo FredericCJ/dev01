@@ -28,6 +28,8 @@ int main(){
     while(strcmp(prenom,PRENOM_STOP)){
         printf("Saisir prenom : ");
         fgets(prenom,100,stdin);
+        if(feof(stdin))
+            break;
         prenom[findlf(prenom)] = '\0';
         
         if(strcmp(prenom,PRENOM_STOP)){                                             
