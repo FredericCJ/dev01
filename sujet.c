@@ -23,26 +23,33 @@ int main(int argc, char *argv[]){
         worst[j] = '\0';
     }
 
-    while(strcmp(prenom,"X AE A-XII\n") != 0){
+    while(strcmp(prenom,PRENOM_STOP)){
         printf("Saisir prenom : ");
         fgets(prenom,100,stdin);
-        mini = min(notes,NOTE_MAX);
-        maxi = max(notes, NOTE_MIN);
-        if(strcmp(prenom,"X AE A-XII\n")){
+        prenom[findlf(prenom)] = '\0';
+        
+        if(strcmp(prenom,PRENOM_STOP)){
             while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
                 sscanf(note,"%f",(notes+i));
             }
         }
-        if(notes[i] < mini)
+
+        mini = min(notes,NOTE_MAX);
+        maxi = max(notes, NOTE_MIN);
+
+        if((notes[i] <= mini) && strcmp(prenom,PRENOM_STOP))
             strcpy(worst,prenom);
-        if(notes[i] > maxi)
+        if(notes[i] >= maxi)
             strcpy(best, prenom);
-        printf("%s\t%s\n",best,worst);
         i++;
     }
-    printf("min : %s\t %.2f\nmax : %s\t %.2f\nmoyenne : %.2f\n",
+
+    printf("\n");
+    system("clear");
+
+    printf("min : %s = %.2f\nmax : %s = %.2f\nmoyenne : %.2f\n",
         worst,
         min(notes, NOTE_MAX),
         best,

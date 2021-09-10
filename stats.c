@@ -1,6 +1,6 @@
 float min(float *notes, float max){
     if(*notes == '\0')
-        return __FLT_MIN__;
+        return -__FLT_MAX__;
     int i = 0;
     while(*(notes+i) != '\0'){
         if(*(notes+i) <= max){
