@@ -8,7 +8,6 @@ int main(int argc, char *argv[]){
     char prenom[PRENOM_MAXLEN];
     char best[PRENOM_MAXLEN];
     char worst[PRENOM_MAXLEN];
-    //char prenoms[PRENOMS_MAXLEN];
     float notes[NOTES_MAXLEN];
     char note[NOTE_MAXLEN];
     float mini;
@@ -16,8 +15,6 @@ int main(int argc, char *argv[]){
     
     for(int j=0; j<NOTES_MAXLEN; j++)
         notes[j] = '\0';
-    /*for(int j=0; j<PRENOMS_MAXLEN; j++)
-        prenoms[j] = '\0';*/
     for(int j=0; j<NOTE_MAXLEN; j++)
         note[j] = '\0';
     for(int j=0; j<PRENOM_MAXLEN; j++){
@@ -29,9 +26,8 @@ int main(int argc, char *argv[]){
     while(strcmp(prenom,"X AE A-XII\n") != 0){
         printf("Saisir prenom : ");
         fgets(prenom,100,stdin);
-        //strcat(prenoms,prenom);
         mini = min(notes,NOTE_MAX);
-        maxi = max(notes, NOTE_MAX);
+        maxi = max(notes, NOTE_MIN);
         if(strcmp(prenom,"X AE A-XII\n")){
             while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
                 printf("Saisir note : ");
@@ -43,6 +39,7 @@ int main(int argc, char *argv[]){
             strcpy(worst,prenom);
         if(notes[i] > maxi)
             strcpy(best, prenom);
+        printf("%s\t%s\n",best,worst);
         i++;
     }
     printf("min : %s\t %.2f\nmax : %s\t %.2f\nmoyenne : %.2f\n",
