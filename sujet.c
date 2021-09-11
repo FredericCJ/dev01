@@ -36,6 +36,8 @@ int main(){
             while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
+                if(feof(stdin))
+                    break;
                 sscanf(note,"%f",(notes+i));
             }
         }
