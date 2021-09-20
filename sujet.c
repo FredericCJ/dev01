@@ -33,12 +33,21 @@ int main(){
     }
 
     while(strcmp(prenom,PRENOM_STOP)){
-        printf("Saisir prenom : ");
-        fgets(prenom,100,stdin);
+        
+        for(int j=0; j<PRENOM_MAXLEN; j++)
+            prenom[j] = '\0';
+
+        while(*prenom == '\n' || *prenom == '\0'){
+            printf("Saisir prenom : ");
+            fgets(prenom,100,stdin);
+            if(feof(stdin))
+                break;
+            printf("%s",prenom);
+            prenom[findlf(prenom)] = '\0';
+        }
+
         if(feof(stdin))
             break;
-        printf("%s",prenom);
-        prenom[findlf(prenom)] = '\0';
         
         if(strcmp(prenom,PRENOM_STOP)){
             while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == -__FLT_MAX__){
