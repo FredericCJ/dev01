@@ -23,7 +23,7 @@ int main(){
     float maxi;
     
     for(int j=0; j<NOTES_MAXLEN; j++)
-        notes[j] = '\0';
+        notes[j] = -__FLT_MAX__;
     for(int j=0; j<NOTE_MAXLEN; j++)
         note[j] = '\0';
     for(int j=0; j<PRENOM_MAXLEN; j++){
@@ -37,15 +37,17 @@ int main(){
         fgets(prenom,100,stdin);
         if(feof(stdin))
             break;
+        printf("%s",prenom);
         prenom[findlf(prenom)] = '\0';
         
-        if(strcmp(prenom,PRENOM_STOP)){                                             
-            while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == '\0'){
+        if(strcmp(prenom,PRENOM_STOP)){
+            while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == -__FLT_MAX__){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
                 if(feof(stdin))
                     break;
                 sscanf(note,"%f",(notes+i));
+                printf("%s",note);
             }
         }
 
@@ -60,7 +62,6 @@ int main(){
     }
 
     printf("\n");
-    system("clear");
 
     printf("min : %s = %.2f\nmax : %s = %.2f\nmoyenne : %.2f\n",
         worst,

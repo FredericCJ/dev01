@@ -1,8 +1,8 @@
 float min(float *notes, float max){
-    if(*notes == '\0')
-        return -__FLT_MAX__;
+    if(*notes == -__FLT_MAX__)
+        return __FLT_MAX__;
     int i = 0;
-    while(*(notes+i) != '\0'){
+    while(*(notes+i) != -__FLT_MAX__){
         if(*(notes+i) <= max){
             max = *(notes+i);
         }
@@ -12,10 +12,10 @@ float min(float *notes, float max){
 }
 
 float max(float *notes, float min){
-    if(*notes == '\0')
-        return __FLT_MAX__;
+    if(*notes == -__FLT_MAX__)
+        return -__FLT_MAX__;
     int i = 0;
-    while(*(notes+i) != '\0'){
+    while(*(notes+i) != -__FLT_MAX__){
         if(*(notes+i) >= min){
             min = *(notes+i);
         }
@@ -27,7 +27,7 @@ float max(float *notes, float min){
 float moyenne(float *notes){
     int i = 0;
     float moyenne = 0.0;
-    while(*(notes+i) != '\0'){
+    while(*(notes+i) != -__FLT_MAX__){
         moyenne = *(notes+i)+moyenne;
         i++;
     }
