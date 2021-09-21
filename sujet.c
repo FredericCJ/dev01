@@ -50,7 +50,7 @@ int main(){
             break;
         
         if(strcmp(prenom,PRENOM_STOP)){
-            while((notes[i]<NOTE_MIN || notes[i]>NOTE_MAX) || notes[i] == -__FLT_MAX__){
+            while(notes[i]<NOTE_MIN || notes[i]>NOTE_MAX){
                 printf("Saisir note : ");
                 fgets(note,NOTE_MAXLEN,stdin);
                 if(feof(stdin))
@@ -63,7 +63,7 @@ int main(){
         mini = min(notes,NOTE_MAX);
         maxi = max(notes, NOTE_MIN);
 
-        if((notes[i] <= mini) && strcmp(prenom,PRENOM_STOP))
+        if((notes[i] <= mini))
             strcpy(worst,prenom);
         if(notes[i] >= maxi)
             strcpy(best, prenom);
