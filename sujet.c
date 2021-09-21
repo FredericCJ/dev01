@@ -55,15 +55,16 @@ int main(){
                 fgets(note,NOTE_MAXLEN,stdin);
                 if(feof(stdin))
                     break;
+                note[findlf(note)] = '\0';
                 sscanf(note,"%f",(notes+i));
-                printf("%s",note);
+                printf("%s\n",note);
             }
         }
 
         mini = min(notes,NOTE_MAX);
         maxi = max(notes, NOTE_MIN);
 
-        if((notes[i] <= mini))
+        if((notes[i] <= mini) && strcmp(prenom,PRENOM_STOP))
             strcpy(worst,prenom);
         if(notes[i] >= maxi)
             strcpy(best, prenom);
